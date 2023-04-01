@@ -25,7 +25,7 @@ app.post('/themsanpham',(req,res)=>{
     var gia=req.body.giasp;
     var soluong =req.body.soluong;
     var khuyenmai=req.body.khuyenmai;
-    AccountModel.create({
+    AccountModel.insertMany({
         tensp:ten,
         giasp:gia,
         soluong:soluong,
