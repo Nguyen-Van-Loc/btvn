@@ -1,5 +1,5 @@
 <div class="container py-3" data-bs-theme="dark">
-    
+
     <div class="row">
         <div class="col-md-12" style="font-size: 20px;margin-top:20px">
             Danh sách San Pham
@@ -7,9 +7,10 @@
         </div>
         <div class="col-md-9">
             <!-- Button trigger modal -->
-            <a href="./themsanpham"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Thêm San Pham
-            </button></a>
+            <a href="./themsanpham"><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">
+                    Thêm San Pham
+                </button></a>
             <!-- Modal -->
         </div>
     </div>
@@ -19,8 +20,9 @@
         <table class="table text-left table-dark  align-middle">
             <thead>
                 <tr>
+                    <th class="col-md-1" scope="col">Id</th>
                     <th class="col-md-1" scope="col">Ten</th>
-                    <th class="col-md-4" scope="col">Gia</th>
+                    <th class="col-md-2" scope="col">Gia</th>
                     <th class="col-md-2" class="text-center" scope="col">So luong</th>
                     <th class="col-md-2" class="text-center" scope="col">Khuyen mai</th>
                     <th class="col-md-2" class="text-center" scope="col">Chuc nang</th>
@@ -31,15 +33,40 @@
                 {{#each sanpham}}
                 <tr>
                     <th scope="row">{{@index}}</th>
-                    <th scope="row">{{this.tensp}}</th>
+                    <th>{{this.tensp}}</th>
                     <td>{{this.giasp}}</td>
                     <td>{{this.soluong}}</td>
                     <td>{{this.khuyenmai}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-primary" style="margin-right: 10px;"><a
                                 style="text-decoration: none;" href="/{{this._id}}/edit/">Sửa</a> </button>
-                        <button type="button" class="btn btn-outline-primary"><a href="/{{this._id}}"
-                                style="text-decoration: none;">Xoa</a></button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Xóa 
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa sản phẩm</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Bạn có muốn xóa sản phẩm không ?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Đóng</button>
+                                            <button type="button" class="btn btn-primary" >
+                                                <a style="text-decoration: none; color: aliceblue;" href="/{{this._id}}">Xóa</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </td>
                 </tr>
                 {{/each}}
