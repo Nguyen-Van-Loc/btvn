@@ -14,7 +14,7 @@ app.set('views', './');
 
 app.get('/',(req,res,next)=>{
     AccountModel.find({}).then(sanpham => {
-        res.render('home', {sanpham:mutipleMongooesToObject(sanpham)})
+        res.render('home', {sanpham:sanpham.map(item=>item.toObject())})
     }).catch(next);
 })
 app.get('/themsanpham',(req,res)=>{
@@ -36,7 +36,7 @@ app.post('/themsanpham',(req,res)=>{
 
 })
 app.get("/:id/edit", async (req, res) => {
-    AccountModel.findById(req.params.id).then(sanpham => res.render('edit', { sanpham: mongooestoObject(sanpham) }))
+    AccountModel.findById(req.params.id).then(sanpham => res.render('edit', { sanpham: sanpham.toObject() }))
 });
 app.put("/:id", async (req, res) => {
     // res.json(req.body)
